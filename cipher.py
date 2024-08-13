@@ -1,10 +1,11 @@
-def caesar(text, step, alphabets):
-
-    def shift(alphabet):
-        return alphabet[step:] + alphabet[:step]
-
-    shifted_alphabets = tuple(map(shift, alphabets))
-    joined_aphabets = ''.join(alphabets)
-    joined_shifted_alphabets = ''.join(shifted_alphabets)
-    table = str.maketrans(joined_aphabets, joined_shifted_alphabets)
-    return text.translate(table)
+def caesar(plainText, shift): 
+  cipherText = ""
+  for ch in plainText:
+    if ch.isalpha():
+      stayInAlphabet = ord(ch) + shift 
+      if stayInAlphabet > ord('z'):
+        stayInAlphabet -= 26
+      finalLetter = chr(stayInAlphabet)
+      cipherText += finalLetter
+  print ('The encrypted sentence is: '), cipherText
+  return cipherText
